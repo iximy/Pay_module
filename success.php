@@ -1,10 +1,11 @@
 <?php 
-//ver 1.05
+//ver 1.07
 include 'config.php';
 
 $stmtto = $connpdo->prepare("SELECT * FROM orders WHERE `user` = ? ORDER BY idorder DESC LIMIT 1");
 $roworder = $stmtto->fetch(PDO::FETCH_LAZY);
 $order_id = $roworder["date"];
+ 
  
  
 $ch = curl_init('https://api.yookassa.ru/v3/payments/' . $order_id);
