@@ -1,10 +1,11 @@
 <?php 
-//ver 1.10v
+//ver 1.14v
 include 'config.php';
 
 $stmtto = $connpdo->prepare("SELECT * FROM orders WHERE `user` = ? ORDER BY idorder DESC LIMIT 1");
 $roworder = $stmtto->fetch(PDO::FETCH_LAZY);
 $order_id = $roworder["date"];
+ 
  
  
  
@@ -19,7 +20,8 @@ curl_close($ch);
 	
 $res = json_decode($res, true);
 if ($res['status']=='succeeded'){
-  
+ 
+ 
   $sthtt = $connpdo->prepare("UPDATE `orders` SET `pay`=1 WHERE `date` = :id");
   $sthtt->execute(array('id' => $order_id));
 }
