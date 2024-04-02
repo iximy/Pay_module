@@ -1,5 +1,5 @@
 <?php 
-//ver 1.17e
+//ver 1.24 stable
 include 'config.php';
 
 $stmtto = $connpdo->prepare("SELECT * FROM orders WHERE `user` = ? ORDER BY idorder DESC LIMIT 1");
