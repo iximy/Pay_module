@@ -1,5 +1,5 @@
 <?php 
-//ver 1.29 
+//ver 1.30 
 include 'config.php';
 
 $stmtto = $connpdo->prepare("SELECT * FROM orders WHERE `user` = ? ORDER BY idorder DESC LIMIT 1");
@@ -22,6 +22,5 @@ if ($res['status']=='succeeded'){
 }
  
 
- 
- 
+
 ?>
