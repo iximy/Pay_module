@@ -1,5 +1,5 @@
 <?php 
-//ver 1.30 
+//ver 1.31 
 include 'config.php';
 
 $stmtto = $connpdo->prepare("SELECT * FROM orders WHERE `user` = ? ORDER BY idorder DESC LIMIT 1");
@@ -17,10 +17,8 @@ $res = curl_exec($ch);
 curl_close($ch);
 $res = json_decode($res, true);
 if ($res['status']=='succeeded'){
-  $sthtt = $connpdo->prepare("UPDATE `orders` SET `pay`=1 WHERE `date` = :id");
-  $sthtt->execute(array('id' => $order_id));
+	$sthtt = $connpdo->prepare("UPDATE `orders` SET `pay`=1 WHERE `date` = :id");
+	$sthtt->execute(array('id' => $order_id));
 }
  
-
-
 ?>
