@@ -1,5 +1,5 @@
 <?php 
-//ver 1.33 stable 
+//ver 1.35  
 include 'config.php';
 
 $stmtto = $connpdo->prepare("SELECT * FROM orders WHERE `user` = ? ORDER BY idorder DESC LIMIT 1");
@@ -12,7 +12,7 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_USERPWD, 'id:key');
 curl_setopt($ch, CURLOPT_HEADER, false);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Idempotence-Key: ' . date("Ymd-His")));
-	$res = curl_exec($ch);
+$res = curl_exec($ch);
 curl_close($ch);
 $res = json_decode($res, true);
 if ($res['status']=='succeeded')
